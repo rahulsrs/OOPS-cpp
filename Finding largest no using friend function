@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+
+class LargestFinder {
+private:
+    float a, b, c;
+
+public:
+    LargestFinder(float x, float y, float z) {
+        a = x;
+        b = y;
+        c = z;
+    }
+
+    friend float lar(LargestFinder obj);
+};
+
+float lar(LargestFinder obj) {
+    return ((obj.a > obj.b && obj.a > obj.c) ? obj.a : (obj.b > obj.c) ? obj.b : obj.c);
+}
+
+int main() {
+    float x, y, z;
+    cout << "Enter three numbers: ";
+    cin >> x >> y >> z;
+
+    LargestFinder obj(x, y, z);
+    cout << "Largest = " << lar(obj) << endl;
+
+    cout << "Taking 3rd number as 50" << endl;
+    cout << "Enter two numbers: ";
+    cin >> x >> y;
+
+    LargestFinder obj2(x, y, 50);
+    cout << "Largest using default value = " << lar(obj2) << endl;
+
+    return 0;
+}
